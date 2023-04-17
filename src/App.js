@@ -10,7 +10,7 @@ import * as api from './api'
 
 function App() {
 
-  const [categories, setCategories] = useState([])
+  const [categories, setCategories] = useState([{slug: "loading..."}])
 
   useEffect(() => {
     api.fetchCategories()
