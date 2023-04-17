@@ -8,10 +8,11 @@ export default function ReviewCard({review}) {
     return (
         <section id='reviewCard'>
             <h2>{review.title}</h2>
+            <div id="reviewImg">
             <img src={review.review_img_url} alt="review image"></img>
-            <p>{review.review_body}</p>
-            <p>Comments: {review.comment_count}</p>
-            <p>votes:{review.votes}</p>
+            </div>
+            <p id="reviewBody">{review.review_body}</p>
+            <p>Comments: {review.comment_count}  votes:{review.votes}</p>
             <p>Posted by {review.owner} at {postedAt}</p>
         </section>
     )
