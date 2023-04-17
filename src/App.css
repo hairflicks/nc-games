@@ -78,19 +78,20 @@ header {
 #reviewCard {
   width: 75vw;
   max-width: 500px;
-  height: auto;
+  height: 500px;
   border: solid;
   border-radius: 3%;
   border-width: 5px;
   border-color: #298AA9;
   background-color: #43799C;
   margin: 15px;
-  word-wrap: break-word
 }
 
 #reviewCard h2{
   color: black;
   font-size: 150%;
+  height: 30px;
+  overflow: hidden;
 }
 
 #reviewCard p{
@@ -99,10 +100,18 @@ header {
 }
 
 #reviewCard img {
-  max-width: 500px;
-  width: 75vw;
-  max-height: 35vh;
-  height: 450px;
+ height: 150px;
+ width: 150px;
+}
+
+#reviewCard #reviewBody {
+  height: 190px;
+  overflow: hidden;
+}
+
+#reviewImg {
+  display:flex;
+  justify-content: center;
 }
 
 
