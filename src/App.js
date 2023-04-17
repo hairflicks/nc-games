@@ -1,25 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header'
+import NavBar from './components/NavBar'
+import ReviewList from './components/ReviewList';
+import { Route, Routes } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import * as api from './api'
+
+
 
 function App() {
+
+  const [categories, setCategories] = useState([])
+
+  useEffect(() => {
+    api.fetchCategories()
+  .then((response) => {
+      setCategories(response)
+    })
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <NavBar categories={categories}/>
+      <Routes>
+        <Route path="/" element={<ReviewList />} />
+        <Route path="/reviews" element={<ReviewList />} />
+      </Routes>
     </div>
   );
 }
 
 export default App;
+
+
