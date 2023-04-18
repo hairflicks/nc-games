@@ -30,11 +30,7 @@ export default function SingleReview({id}) {
             return reviewCopy
         })
         api.patchReviewVotes(change,id)
-        .then(response => setReview(review => {
-            response.comment_count = review.comment_count
-            setVoteError(false)
-            return response
-        }))
+        .then(() => {setVoteError(false)})
         .catch(() => {
         setVoteError(true)
         setReview((review) => {
