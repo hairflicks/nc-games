@@ -17,3 +17,10 @@ export function fetchCategories() {
         return response.data.categories
     });
 };
+
+export function fetchReviewById(id) {
+    return boardGamesApi.get(`/reviews/${id}`)
+    .then(({data}) => {
+        return data.review[0]
+    })
+}

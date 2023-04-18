@@ -5,6 +5,7 @@ import ReviewList from './components/ReviewList';
 import { Route, Routes } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import * as api from './api'
+import ReviewPage from './components/ReviewPage';
 
 
 
@@ -26,6 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ReviewList />} />
         <Route path="/reviews" element={<ReviewList />} />
+        <Route path="/reviews/:id" element={<ReviewPage />} />
       </Routes>
     </div>
   );
