@@ -31,3 +31,10 @@ export function fetchCommentsByReviewId(id) {
         return data.comments
     })
 }
+
+export function patchReviewVotes(change, id) {
+    return boardGamesApi.patch(`/reviews/${id}`, {inc_votes: change})
+    .then(({data}) => {
+        return data.review
+    })
+}

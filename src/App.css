@@ -197,3 +197,27 @@ a {
 date {
   color:#242e4571
 }
+
+#upvote{
+    height: 15px;
+    width: 15px;
+}
+
+#downvote {
+    height: 15px;
+    width: 15px;
+    margin-left: 5px;
+}
+
+#singleReview button img {
+  fill-opacity: 0;
+}
+
+#reviewVotes {
+  display:inline;
+}
+
+#singleReview #voteError {
+  display:inline;
+  color:darkred;
+}
