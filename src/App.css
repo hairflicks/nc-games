@@ -132,7 +132,9 @@ header {
   padding: 15px;
 }
 
-#singleReview h2 {
+#singleReview article {
+  font-weight: bolder;
+  margin: 10px;
   color: black;
   font-size: 150%;
   height: 30px;

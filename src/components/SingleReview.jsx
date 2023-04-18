@@ -23,9 +23,8 @@ export default function SingleReview({id}) {
     }
 
     return (
-        <div>
             <section id="singleReview">
-            <h2>{review.title}</h2>
+            <article>{review.title}</article>
             <div>
             <img src={review.review_img_url} alt="review image"></img>
             </div>
@@ -34,6 +33,5 @@ export default function SingleReview({id}) {
             <p>votes:{review.votes}</p>
             <p>Posted by {review.owner} at {postedAt}</p>
         </section>
-        </div>
     )
 }
