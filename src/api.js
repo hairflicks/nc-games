@@ -24,3 +24,10 @@ export function fetchReviewById(id) {
         return data.review[0]
     })
 }
+
+export function fetchCommentsByReviewId(id) {
+    return boardGamesApi.get(`/reviews/${id}/comments`)
+    .then(({data}) => {
+        return data.comments
+    })
+}

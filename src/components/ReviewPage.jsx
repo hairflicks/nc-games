@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom"
 import SingleReview from "./SingleReview"
+import Comments from "./Comments"
 
 export default function ReviewPage() {
     
@@ -7,7 +8,10 @@ export default function ReviewPage() {
 
 
     return (
-        <SingleReview id={id}/>
+        <div>
+            <SingleReview id={id}/>
+            <Comments id={id}/>
+        </div>
     )
 
 }
