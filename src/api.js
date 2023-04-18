@@ -38,3 +38,17 @@ export function patchReviewVotes(change, id) {
         return data.review
     })
 }
+
+export function postCommentByReviewId(comment, id) {
+    return boardGamesApi.post(`/reviews/${id}/comments`, comment)
+    .then(({data}) => {
+        return data.comment
+    })
+}
+
+export function fetchUsers() {
+    return boardGamesApi.get('/users')
+    .then(({data}) => {
+        return data.users
+    })
+}

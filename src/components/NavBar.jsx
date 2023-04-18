@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom'
 
-export default function NavBar ({categories}) {
+export default function NavBar ({categories, currentUser, setCurrentUser}) {
+
+    function handleLogout(e) {
+      setCurrentUser()
+    }
 
     return (
         <nav id="navBar">
@@ -26,9 +30,12 @@ export default function NavBar ({categories}) {
           <Link to="profile">
           <button>My Profile</button>
           </Link>
+          {currentUser ?
+          <button onClick={handleLogout}>Logout</button>
+          :
           <Link to="login">
           <button>Login</button>
-          </Link>
+          </Link>}
         </nav>
       )
 }

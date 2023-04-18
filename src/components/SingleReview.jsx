@@ -41,7 +41,6 @@ export default function SingleReview({id}) {
         })
     })
     }
-    console.log(voteError)
 
     if (isLoading) {
         return <h2>Page is loading....</h2>

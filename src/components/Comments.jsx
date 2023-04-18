@@ -2,9 +2,8 @@ import { useState, useEffect } from "react"
 import * as api from '../api'
 
 
-export default function Comments({id}) {
+export default function Comments({id, comments, setComments}) {
 
-    const [comments, setComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
