@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 
 export default function ReviewCard({review}) {
 
@@ -6,14 +7,18 @@ export default function ReviewCard({review}) {
 
 
     return (
+        <Link to={`/reviews/${review.review_id}`}>
         <section id='reviewCard'>
             <h2>{review.title}</h2>
             <div id="reviewImg">
             <img src={review.review_img_url} alt="review image"></img>
             </div>
             <p id="reviewBody">{review.review_body}</p>
-            <p>Comments: {review.comment_count}  votes:{review.votes}</p>
+            <p id="comments">Comments: {review.comment_count}</p>
+            <p id="votes">votes:{review.votes}</p>
             <p>Posted by {review.owner} at {postedAt}</p>
         </section>
+        </Link>
+        
     )
 }

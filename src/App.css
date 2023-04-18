@@ -76,9 +76,9 @@ header {
 }
 
 #reviewCard {
-  width: 75vw;
+  min-width: 200px;
   max-width: 500px;
-  height: 500px;
+  min-height: 500px;
   border: solid;
   border-radius: 3%;
   border-width: 5px;
@@ -92,6 +92,8 @@ header {
   font-size: 150%;
   height: 30px;
   overflow: hidden;
+  border-bottom-style: solid;
+  border-bottom-color: #203769;
 }
 
 #reviewCard p{
@@ -114,5 +116,48 @@ header {
   justify-content: center;
 }
 
+#reviewCard #votes {
+  margin-left: 60%;
+  display:inline;
+}
 
+#reviewCard #comments {
+  display:inline;
+}
+
+#singleReview p {
+  max-width: 1000px;
+  color: wheat;
+  padding: 15px;
+}
+
+#singleReview h2 {
+  color: black;
+  font-size: 150%;
+  height: 30px;
+  overflow: hidden;
+  border-bottom-style: solid;
+  border-bottom-color: #203769;
+}
+
+#singleReview {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #43799C;
+  border-bottom-style: solid;
+  border-bottom-width: 10px;
+  border-bottom-color: #298AA9;
+}
+
+#singleReview img {
+  max-width: 500px;
+  max-height: 500px;
+  height: 100%;
+  width: 100%;
+ }
+
+a {
+  text-decoration: none;
+}
 
