@@ -6,12 +6,15 @@ import { Route, Routes } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import * as api from './api'
 import ReviewPage from './components/ReviewPage';
+import LoginPage from './components/LoginPage'
 
 
 
 function App() {
 
   const [categories, setCategories] = useState([{slug: "loading..."}])
+  const [currentUser, setCurrentUser] = useState()
+  console.log(currentUser)
 
   useEffect(() => {
     api.fetchCategories()
@@ -23,11 +26,12 @@ function App() {
   return (
     <div>
       <Header />
-      <NavBar categories={categories}/>
+      <NavBar categories={categories} setCurrentUser={setCurrentUser} currentUser={currentUser}/>
       <Routes>
         <Route path="/" element={<ReviewList />} />
         <Route path="/reviews" element={<ReviewList />} />
-        <Route path="/reviews/:id" element={<ReviewPage />} />
+        <Route path="/reviews/:id" element={<ReviewPage currentUser={currentUser}/>} />
+        <Route path="/login" element={<LoginPage setCurrentUser={setCurrentUser}/>} />
       </Routes>
     </div>
   );
