@@ -4,7 +4,7 @@ header h1 {
   color: #f3e3b2;
   margin-top: 0;
   margin-bottom: 0;
-  
+  word-wrap: break-word;
 }
 
 header {
@@ -108,7 +108,8 @@ header {
 
 #reviewCard #reviewBody {
   height: 190px;
-  overflow: hidden;
+  display:table;
+  width: 100%;
 }
 
 #reviewImg {
