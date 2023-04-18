@@ -2,6 +2,7 @@ import { fetchReviews } from "../api"
 import { useEffect, useState } from "react"
 import ReviewCard from "./ReviewCard"
 import { useSearchParams } from "react-router-dom"
+import QueryBar from "./QueryBar"
 
 
 export default function ReviewList() {
@@ -26,13 +27,17 @@ export default function ReviewList() {
     }
 
     return (
-
-            <main id="reviewList">
+        <main>
+            <section id="queryBar">
+            <QueryBar />
+            </section>
+            <section id="reviewList">
             {reviews.map(review => {
                 return <div key={review.review_id}>
                     <ReviewCard review={review}/>
                     </div>
             })}
+        </section>
         </main>
     )
 
