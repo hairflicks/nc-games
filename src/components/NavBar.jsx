@@ -30,7 +30,7 @@ export default function NavBar ({categories, currentUser, setCurrentUser}) {
           My Profile
           </Link>
           {currentUser ?
-           <Link>onClick={handleLogout}Logout</Link>
+           <Link onClick={handleLogout}>Logout</Link>
           :
           <Link to="login">
            Login
