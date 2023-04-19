@@ -9,6 +9,10 @@ export default function PostComment({id, currentUser, setComments}) {
 
     function handleSubmit(e){
         e.preventDefault()
+        if (comment.trim() === "") {
+            alert("Comment cannot be empty.");
+            return false
+        }
         const postComment = {
             username: currentUser.username,
             body: comment

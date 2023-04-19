@@ -297,3 +297,50 @@ date {
   font-size:larger;
   text-align: center;
 }
+
+#queryBar {
+  background-color:#43799C;
+  border: solid;
+  border-color: #298AA9;
+  text-align: center;
+}
+
+#sortBySelector {
+  display: inline;
+}
+
+#orderSelector {
+  display: inline
+}
+
+#sortBy {
+  background-color: wheat;
+  color: #203769;
+  font-weight: bold;
+}
+
+#order {
+  background-color: wheat;
+  color: #203769;
+  font-weight: bold;
+}
+
+#sortBy option{
+  background-color: wheat;
+  color: #203769;
+  font-weight: bold;
+}
+
+#order option{
+  background-color: wheat;
+  color: #203769;
+  font-weight: bold;
+}
+
+#sortBy:hover {
+  cursor: pointer;
+}
+
+#order:hover {
+  cursor: pointer;
+}
