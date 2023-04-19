@@ -19,21 +19,21 @@ export default function QueryBar() {
 
     return (
         <section id="queryBar">
-            <section id="sortBySelector">
+            <section id="sortBySelector" defaultValue="created_at">
             <label  htmlFor="sortBy">Sort by: </label>
             <select onChange={handleSortByChange} name="sortBy" id="sortBy">
+            <option value="created_at">date posted</option>
             <option value="title">title</option>
             <option value="votes">votes</option>
             <option value="comment_count">comment count</option>
             <option value="category">category</option>
-            <option Value="created_at" selected>date posted</option>
             </select>
         </section>
-        <section id="orderSelector">
+        <section id="orderSelector" defaultValue="desc">
         <label  htmlFor="order">order: </label>
         <select onChange={handleOrderChange} name="order" id="order">
+        <option value="desc">desc</option>
         <option value="asc">asc</option>
-        <option defaultValue="desc" selected>desc</option>
         </select>
     </section>
         </section>   
