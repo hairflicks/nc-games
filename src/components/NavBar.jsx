@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 export default function NavBar ({categories, currentUser, setCurrentUser}) {
 
     function handleLogout(e) {
+      sessionStorage.clear()
       setCurrentUser()
     }
 

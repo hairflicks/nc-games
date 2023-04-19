@@ -19,7 +19,10 @@ export default function LoginPage({ setCurrentUser }) {
           return (
             <div key={user.username}>
                 <Link to={`/profile`}>
-              <section onClick={() => {setCurrentUser(user)}} id="userCard">
+              <section onClick={() => {
+                setCurrentUser(user)
+                sessionStorage.setItem('currentUser', JSON.stringify(user))
+                }} id="userCard">
                 <p>{user.username}</p>
                 <img src={user.avatar_url} alt="user avatar" />
               </section>
