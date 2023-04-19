@@ -4,9 +4,8 @@ const boardGamesApi = axios.create({
     baseURL: "https://board-games-api-89zv.onrender.com/api"
 });
 
-export function fetchReviews(category) {
-
-    return boardGamesApi.get('/reviews', {params: {category}})
+export function fetchReviews(category, sort_by, order) {
+    return boardGamesApi.get('/reviews', {params: {category, sort_by, order}})
     .then((response) => {
         return response.data.reviews
     });

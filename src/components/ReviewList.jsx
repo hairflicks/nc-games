@@ -12,15 +12,23 @@ export default function ReviewList() {
 
     const [searchParams, setSearchParams] = useSearchParams()
 
+    useEffect(() => {
+        searchParams.delete('sort_by')
+        searchParams.delete('order')
+        setSearchParams(searchParams)
+    }, [])
+
     const categoryQuery = searchParams.get('category')
+    const sortByQuery = searchParams.get('sort_by')
+    const orderQuery = searchParams.get('order')
 
     useEffect(() => {
-        fetchReviews(categoryQuery)
+        fetchReviews(categoryQuery, sortByQuery, orderQuery)
     .then((response) => {
         setReviews(response)
         setIsLoading(false)
     })
-     }, [categoryQuery])
+     }, [categoryQuery, sortByQuery, orderQuery])
 
     if (isLoading) {
         return <h2>Page is loading...</h2>
