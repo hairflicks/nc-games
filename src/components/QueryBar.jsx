@@ -30,7 +30,7 @@ export default function QueryBar() {
             </select>
         </section>
         <section id="orderSelector" defaultValue="desc">
-        <label  htmlFor="order">order: </label>
+        <label  htmlFor="order">Order: </label>
         <select onChange={handleOrderChange} name="order" id="order">
         <option value="desc">desc</option>
         <option value="asc">asc</option>

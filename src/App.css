@@ -58,10 +58,7 @@ header {
   text-decoration: none;
   display: block;
 }
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #a8a07a;
-}
+
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
@@ -317,6 +314,7 @@ date {
   background-color: wheat;
   color: #203769;
   font-weight: bold;
+  margin-right: 10px;
 }
 
 #order {
@@ -354,3 +352,25 @@ date {
   color: wheat;
   font-weight: bold;
 }
+
+#navBar a {
+  height: 100%;
+  width: 25vw;
+  font-weight: bolder;
+  font-size: 3vmin;
+  background-color: #D2C89B;
+  color: #203769;
+  border-style: hidden;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  line-height: 70px; 
+}
+
+#navBar a:hover{
+  cursor: pointer;
+  background-color: #a8a07a;
+}
+

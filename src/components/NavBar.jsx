@@ -9,19 +9,17 @@ export default function NavBar ({categories, currentUser, setCurrentUser}) {
 
     return (
         <nav id="navBar">
-            <Link to="/reviews">
-          <button>reviews</button>
-          </Link>
+            <Link to="/reviews"> Reviews</Link>
           <div className="dropdown">
-            <button className="dropbtn">Categories</button>
+            <Link to="/reviews" className="dropbtn">Categories</Link>
             <div className="dropdown-content">
               <Link to="/reviews">
-                <p key='all'>All</p>
+                All
               </Link>
               {categories.map((category) => {
                 return (<div key={category.slug}>
                   <Link to={`reviews?category=${category.slug}` }>
-                    <p >{category.slug}</p>
+                    {category.slug}
                   </Link>
                 </div>        
                 );
@@ -29,13 +27,13 @@ export default function NavBar ({categories, currentUser, setCurrentUser}) {
             </div>
           </div>
           <Link to="profile">
-          <button>My Profile</button>
+          My Profile
           </Link>
           {currentUser ?
-          <button onClick={handleLogout}>Logout</button>
+           <Link>onClick={handleLogout}Logout</Link>
           :
           <Link to="login">
-          <button>Login</button>
+           Login
           </Link>}
         </nav>
       )
