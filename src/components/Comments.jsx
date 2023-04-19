@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import * as api from '../api'
 
 
-export default function Comments({id, comments, setComments, currentUser}) {
+export default function Comments({id, comments, setComments, currentUser, addedComments}) {
 
     const [isLoading, setIsLoading] = useState(true)
 
@@ -22,7 +22,13 @@ export default function Comments({id, comments, setComments, currentUser}) {
                 return comment.comment_id != id
             })
         })
-        api.deleteCommentById(id)
+        if(addedComments[id]) {
+            api.deleteCommentById(addedComments[id])
+        } else {
+            api.deleteCommentById(id)
+
+        }
+        // api.deleteCommentById(id)
     }
 
     if (isLoading) {
