@@ -53,3 +53,7 @@ export function fetchUsers() {
         return data.users
     })
 }
+
+export function deleteCommentById(id) {
+    return boardGamesApi.delete(`/comments/${id}`)
+}

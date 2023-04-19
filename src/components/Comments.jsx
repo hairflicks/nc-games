@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import * as api from '../api'
 
 
-export default function Comments({id, comments, setComments}) {
+export default function Comments({id, comments, setComments, currentUser}) {
 
     const [isLoading, setIsLoading] = useState(true)
 
@@ -13,6 +13,17 @@ export default function Comments({id, comments, setComments}) {
         setIsLoading(false)
     })
     }, [])
+
+    function handleDelete(e) {
+        const id = e.target.value
+        setComments(comments => {
+            const copy = [...comments]
+            return copy.filter(comment => {
+                return comment.comment_id != id
+            })
+        })
+        api.deleteCommentById(id)
+    }
 
     if (isLoading) {
         return <h2>Comments are loading....</h2>
@@ -33,6 +44,7 @@ export default function Comments({id, comments, setComments}) {
                         <p id="commentVotes">{comment.votes} votes</p>
                         <p id="commentBody">{comment.body}</p>
                         <date>{postedAt}</date>
+                        {currentUser ? currentUser.username === comment.author ? <button onClick={handleDelete} value={comment.comment_id} id="deleteComment">delete</button> : null : null}
                     </article>
                 )
             })}

@@ -13,7 +13,7 @@ export default function ReviewPage({currentUser}) {
     return (
         <div>
             <SingleReview id={id}/>
-            <Comments id={id} comments={comments} setComments={setComments}/>
+            <Comments id={id} comments={comments} setComments={setComments} currentUser={currentUser}/>
             <PostComment id={id} currentUser={currentUser} setComments={setComments}/>
         </div>
     )
