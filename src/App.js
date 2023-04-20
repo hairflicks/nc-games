@@ -13,8 +13,7 @@ import LoginPage from './components/LoginPage'
 function App() {
 
   const [categories, setCategories] = useState([{slug: "loading..."}])
-  const [currentUser, setCurrentUser] = useState()
-  console.log(currentUser)
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('currentUser')))
 
   useEffect(() => {
     api.fetchCategories()

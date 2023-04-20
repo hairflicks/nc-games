@@ -9,11 +9,10 @@ export default function ReviewPage({currentUser}) {
     const [comments, setComments] = useState([])
     const { id } = useParams()
 
-
     return (
         <div>
             <SingleReview id={id}/>
-            <Comments id={id} comments={comments} setComments={setComments}/>
+            <Comments id={id} comments={comments} setComments={setComments} currentUser={currentUser}/>
             <PostComment id={id} currentUser={currentUser} setComments={setComments}/>
         </div>
     )

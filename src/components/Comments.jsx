@@ -2,9 +2,11 @@ import { useState, useEffect } from "react"
 import * as api from '../api'
 
 
-export default function Comments({id, comments, setComments}) {
+export default function Comments({id, comments, setComments, currentUser, addedComments}) {
 
     const [isLoading, setIsLoading] = useState(true)
+    const [deleteError, setDeleteError] = useState(false)
+    const [disabled, setDisabled] = useState(false)
 
     useEffect(() => {
         api.fetchCommentsByReviewId(id)
@@ -13,6 +15,31 @@ export default function Comments({id, comments, setComments}) {
         setIsLoading(false)
     })
     }, [])
+
+    function handleDelete(e) {
+
+        setDeleteLoading('waiting')
+        setDisabled(true)
+        const commentId = e.target.value
+
+            api.deleteCommentById(commentId)
+                .then(() => {
+                    setDisabled(false)
+                    setDeleteError(false)
+                    setComments(comments => {
+                        console.log(commentId)
+                        const commentsCopy = [...comments]
+                        const filtered = commentsCopy.filter(comment => {
+                            return comment.comment_id != commentId
+                        })
+                        return filtered
+                    })
+                })
+                .catch(err => {
+                    setDisabled(false)
+                    setDeleteError(commentId)
+                })
+    }
 
     if (isLoading) {
         return <h2>Comments are loading....</h2>
@@ -33,6 +60,8 @@ export default function Comments({id, comments, setComments}) {
                         <p id="commentVotes">{comment.votes} votes</p>
                         <p id="commentBody">{comment.body}</p>
                         <date>{postedAt}</date>
+                        {currentUser && currentUser.username === comment.author && <button onClick={handleDelete} value={comment.comment_id} id="deleteComment" disabled={disabled}>delete</button>}
+                        {currentUser && currentUser.username === comment.author && deleteError == comment.comment_id && <p id="errorDelete">Error deleting try again!</p>}
                     </article>
                 )
             })}

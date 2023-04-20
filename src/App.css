@@ -1,3 +1,9 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  background-color: #203769;
+}
+
 header h1 {
   font-size: 50px;
   margin-left: 10%;
@@ -47,7 +53,7 @@ header {
   display: none;
   position: absolute;
   background-color: #D2C89B;
-  min-width: 100%;
+  width: 100%;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
@@ -58,10 +64,7 @@ header {
   text-decoration: none;
   display: block;
 }
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #a8a07a;
-}
+
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
@@ -317,6 +320,7 @@ date {
   background-color: wheat;
   color: #203769;
   font-weight: bold;
+  margin-right: 10px;
 }
 
 #order {
@@ -343,4 +347,59 @@ date {
 
 #order:hover {
   cursor: pointer;
+}
+
+#postCommentErrorButton {
+  background-color: darkred;
+  border-radius: 5%;
+  height: 8vh;
+  margin-top: 3.5vh;
+  margin-left: 10px;
+  color: wheat;
+  font-weight: bold;
+}
+
+#navBar a {
+  height: 100%;
+  width: 25vw;
+  font-weight: bolder;
+  font-size: 3vmin;
+  background-color: #D2C89B;
+  color: #203769;
+  border-style: hidden;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  line-height: 70px; 
+}
+
+#navBar a:hover{
+  cursor: pointer;
+  background-color: #a8a07a;
+}
+
+#deleteComment {
+  background-color: darkred;
+  color: white;
+  margin-left: 10px;
+  margin-bottom: 2px;
+  border-radius: 20%;
+}
+
+#deleteComment:disabled {
+  cursor:wait;
+}
+
+#errorDelete {
+  color:darkred
+}
+
+#postCommentButton:disabled {
+  cursor:wait;
+}
+
+#postCommentText:disabled {
+  cursor:wait;
 }

@@ -2,13 +2,16 @@ import * as api from '../api'
 import {useState} from 'react'
 import { Link } from 'react-router-dom'
 
-export default function PostComment({id, currentUser, setComments}) {
+export default function PostComment({id, currentUser, setComments, setAddedComments}) {
 
     const [comment, setComment] = useState('')
+    const [postError, setPostError] = useState(false)
+    const [submitDisabled, setSubmitDisable] = useState(false)
 
 
     function handleSubmit(e){
-        e.preventDefault()
+            setSubmitDisable(true)
+            e.preventDefault()
         if (comment.trim() === "") {
             alert("Comment cannot be empty.");
             return false
@@ -17,17 +20,20 @@ export default function PostComment({id, currentUser, setComments}) {
             username: currentUser.username,
             body: comment
         }
-        setComment('')
-        setComments(comments => {
-            const newComment = {
-                author: currentUser.username,
-                body: comment,
-                created_at: new Date(),
-                comment_id: new Date()
-            }
-            return [...comments, newComment]
+       api.postCommentByReviewId(postComment, id)
+        .then((response) => {
+            setPostError(false)
+            setComment('')
+            setSubmitDisable(false)
+            setComments(comments => {
+                const commentsCopy = [...comments]
+                commentsCopy.push(response)
+                return commentsCopy
+            })
+        }).catch((err) => {
+            setSubmitDisable(false)
+            setPostError(true)
         })
-        api.postCommentByReviewId(postComment, id)
     }
 
     function handleChange(e) {
@@ -37,9 +43,9 @@ export default function PostComment({id, currentUser, setComments}) {
 
     return (
         currentUser ?
-        <form onSubmit={handleSubmit} id="postCommentForm">
-            <textarea required value={comment} onChange={handleChange} id="postCommentText"></textarea>
-            <button type="submit" id="postCommentButton">Submit comment</button>
+        <form onSubmit={handleSubmit} id="postCommentForm" disabled={submitDisabled}>
+            <textarea required value={comment} onChange={handleChange} id="postCommentText" disabled={submitDisabled}></textarea>
+            {postError ? <button id="postCommentErrorButton" disabled={submitDisabled}>Unable to submit <br></br> Try again</button> : <button type="submit" id="postCommentButton" disabled={submitDisabled}>Submit comment</button>}
         </form>
         :
         <section id="postCommentLogin">

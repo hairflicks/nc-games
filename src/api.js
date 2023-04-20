@@ -43,7 +43,7 @@ export function patchReviewVotes(change, id) {
 export function postCommentByReviewId(comment, id) {
     return boardGamesApi.post(`/reviews/${id}/comments`, comment)
     .then(({data}) => {
-        return data.comment
+        return data.addedComment
     })
 }
 
@@ -52,4 +52,8 @@ export function fetchUsers() {
     .then(({data}) => {
         return data.users
     })
+}
+
+export function deleteCommentById(id) {
+    return boardGamesApi.delete(`/comments/${id}`)
 }
