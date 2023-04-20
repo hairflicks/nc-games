@@ -388,3 +388,18 @@ date {
   border-radius: 20%;
 }
 
+#deleteComment:disabled {
+  cursor:wait;
+}
+
+#errorDelete {
+  color:darkred
+}
+
+#postCommentButton:disabled {
+  cursor:wait;
+}
+
+#postCommentText:disabled {
+  cursor:wait;
+}

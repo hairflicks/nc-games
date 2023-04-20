@@ -7,14 +7,13 @@ import {useState} from 'react'
 export default function ReviewPage({currentUser}) {
     
     const [comments, setComments] = useState([])
-    const [addedComments, setAddedComments] = useState({})
     const { id } = useParams()
 
     return (
         <div>
             <SingleReview id={id}/>
-            <Comments id={id} comments={comments} setComments={setComments} currentUser={currentUser} addedComments={addedComments}/>
-            <PostComment id={id} currentUser={currentUser} setComments={setComments} setAddedComments={setAddedComments}/>
+            <Comments id={id} comments={comments} setComments={setComments} currentUser={currentUser}/>
+            <PostComment id={id} currentUser={currentUser} setComments={setComments}/>
         </div>
     )
 

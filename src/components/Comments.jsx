@@ -6,6 +6,7 @@ export default function Comments({id, comments, setComments, currentUser, addedC
 
     const [isLoading, setIsLoading] = useState(true)
     const [deleteError, setDeleteError] = useState(false)
+    const [disabled, setDisabled] = useState(false)
 
     useEffect(() => {
         api.fetchCommentsByReviewId(id)
@@ -15,28 +16,29 @@ export default function Comments({id, comments, setComments, currentUser, addedC
     })
     }, [])
 
-    function deleteCommentAPI(id) {
-        api.deleteCommentById(id)
-            .then(setDeleteError(false))
-            .catch(err => {
-                setDeleteError(true)
-                alert('error deleting! please refresh and try again!')
-            })
-    }
-
     function handleDelete(e) {
-        const id = e.target.value
-        setComments(comments => {
-            const copy = [...comments]
-            return copy.filter(comment => {
-                return comment.comment_id != id
-            })
-        })
-        if(addedComments[id]) {
-            deleteCommentAPI(addedComments[id])
-        } else {
-            deleteCommentAPI(id)
-        }
+
+        setDeleteLoading('waiting')
+        setDisabled(true)
+        const commentId = e.target.value
+
+            api.deleteCommentById(commentId)
+                .then(() => {
+                    setDisabled(false)
+                    setDeleteError(false)
+                    setComments(comments => {
+                        console.log(commentId)
+                        const commentsCopy = [...comments]
+                        const filtered = commentsCopy.filter(comment => {
+                            return comment.comment_id != commentId
+                        })
+                        return filtered
+                    })
+                })
+                .catch(err => {
+                    setDisabled(false)
+                    setDeleteError(commentId)
+                })
     }
 
     if (isLoading) {
@@ -58,7 +60,8 @@ export default function Comments({id, comments, setComments, currentUser, addedC
                         <p id="commentVotes">{comment.votes} votes</p>
                         <p id="commentBody">{comment.body}</p>
                         <date>{postedAt}</date>
-                        {currentUser ? currentUser.username === comment.author ? <button onClick={handleDelete} value={comment.comment_id} id="deleteComment">delete</button> : null : null}
+                        {currentUser && currentUser.username === comment.author && <button onClick={handleDelete} value={comment.comment_id} id="deleteComment" disabled={disabled}>delete</button>}
+                        {currentUser && currentUser.username === comment.author && deleteError == comment.comment_id && <p id="errorDelete">Error deleting try again!</p>}
                     </article>
                 )
             })}
