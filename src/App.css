@@ -5,12 +5,21 @@ html, body {
 }
 
 header h1 {
-  font-size: 50px;
+  font-size: 5.5vmax;
   margin-left: 10%;
   color: #f3e3b2;
   margin-top: 0;
   margin-bottom: 0;
   word-wrap: break-word;
+  max-width: 90vw;
+}
+
+#dice {
+  display: block;
+  max-width:230px;
+  max-height:95px;
+  width: auto;
+  height: auto;
 }
 
 header {
@@ -413,5 +422,9 @@ date {
 .profilePage{
   text-align: center;
   color:wheat;
+}
+
+.profilePage img {
+  max-width: 75vw
 }
 
