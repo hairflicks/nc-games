@@ -7,13 +7,15 @@ export default function PostComment({id, currentUser, setComments, setAddedComme
     const [comment, setComment] = useState('')
     const [postError, setPostError] = useState(false)
     const [submitDisabled, setSubmitDisable] = useState(false)
+    const [emptyComment, setEmptyComment] = useState(false)
 
 
     function handleSubmit(e){
             setSubmitDisable(true)
             e.preventDefault()
         if (comment.trim() === "") {
-            alert("Comment cannot be empty.");
+            setEmptyComment(true)
+            setSubmitDisable(false)
             return false
         }
         const postComment = {
@@ -37,16 +39,20 @@ export default function PostComment({id, currentUser, setComments, setAddedComme
     }
 
     function handleChange(e) {
+        setEmptyComment(false)
         setComment(e.target.value)
     }
 
 
-    return (
+    return (  
         currentUser ?
+        <section id="postComment">
+        {emptyComment ? <p id="emptyComment">Unable to post empty comment!</p> : null}
         <form onSubmit={handleSubmit} id="postCommentForm" disabled={submitDisabled}>
             <textarea required value={comment} onChange={handleChange} id="postCommentText" disabled={submitDisabled}></textarea>
             {postError ? <button id="postCommentErrorButton" disabled={submitDisabled}>Unable to submit <br></br> Try again</button> : <button type="submit" id="postCommentButton" disabled={submitDisabled}>Submit comment</button>}
         </form>
+        </section>
         :
         <section id="postCommentLogin">
             <p>Please <Link to="/login">login</Link> to post a comment</p>

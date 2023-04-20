@@ -5,12 +5,21 @@ html, body {
 }
 
 header h1 {
-  font-size: 50px;
+  font-size: 5.5vmax;
   margin-left: 10%;
   color: #f3e3b2;
   margin-top: 0;
   margin-bottom: 0;
   word-wrap: break-word;
+  max-width: 90vw;
+}
+
+#dice {
+  display: block;
+  max-width:230px;
+  max-height:95px;
+  width: auto;
+  height: auto;
 }
 
 header {
@@ -79,7 +88,7 @@ header {
 }
 
 #reviewCard {
-  min-width: 200px;
+  min-width: auto;
   max-width: 500px;
   min-height: 500px;
   border: solid;
@@ -153,7 +162,7 @@ header {
   background-color: #43799C;
   border-bottom-style: solid;
   border-bottom-width: 10px;
-  border-bottom-color: #298AA9;
+  border-bottom-color: #203769;
 }
 
 #singleReview img {
@@ -256,10 +265,10 @@ date {
 }
 
 #postCommentForm {
-  border-top: solid;
+  /* border-top: solid;
   border-color: #298AA9;
   border-top-width: 10px;
-  background-color: #43799C;
+  background-color: #43799C; */
   display: flex;
   justify-content: center;
 }
@@ -402,4 +411,35 @@ date {
 
 #postCommentText:disabled {
   cursor:wait;
+}
+
+.errorMsg{
+  color:red;
+  text-align: center;
+  font-size:xx-large;
+}
+
+.profilePage{
+  text-align: center;
+  color:wheat;
+}
+
+.profilePage img {
+  max-width: 75vw
+}
+
+#emptyComment {
+  text-align: center;
+  color: wheat;
+  background-color:#43799C;
+  margin-top: 10px;
+  padding: 0;
+  font-weight: bold;
+}
+
+#postComment {
+  border-top: solid;
+  border-color:#203769;
+  border-top-width: 10px;
+  background-color: #43799C;
 }

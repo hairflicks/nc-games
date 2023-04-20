@@ -57,3 +57,8 @@ export function fetchUsers() {
 export function deleteCommentById(id) {
     return boardGamesApi.delete(`/comments/${id}`)
 }
+
+export function fetchUserByUsername(username) {
+    return boardGamesApi.get(`/users/${username}`)
+    .then(({data}) => {return data.user})
+}
