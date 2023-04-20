@@ -13,7 +13,7 @@ export default function Comments({id, comments, setComments, currentUser, addedC
     .then(response => {
         setComments(response)
         setIsLoading(false)
-    })
+    }).catch((err => {}))
     }, [])
 
     function handleDelete(e) {
@@ -26,7 +26,6 @@ export default function Comments({id, comments, setComments, currentUser, addedC
                     setDisabled(false)
                     setDeleteError(false)
                     setComments(comments => {
-                        console.log(commentId)
                         const commentsCopy = [...comments]
                         const filtered = commentsCopy.filter(comment => {
                             return comment.comment_id != commentId

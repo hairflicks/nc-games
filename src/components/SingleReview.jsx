@@ -15,7 +15,7 @@ export default function SingleReview({id, setIdError}) {
         setReview(response)
         setIsLoading(false)
     })
-    .catch(err => {
+    .catch((err) => {
         setIdError(err.response.data.msg)
     })
     }, [])
