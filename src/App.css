@@ -1,3 +1,9 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  background-color: #203769;
+}
+
 header h1 {
   font-size: 50px;
   margin-left: 10%;
@@ -372,5 +378,13 @@ date {
 #navBar a:hover{
   cursor: pointer;
   background-color: #a8a07a;
+}
+
+#deleteComment {
+  background-color: darkred;
+  color: white;
+  margin-left: 10px;
+  margin-bottom: 2px;
+  border-radius: 20%;
 }
 

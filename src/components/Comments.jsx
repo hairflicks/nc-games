@@ -5,6 +5,7 @@ import * as api from '../api'
 export default function Comments({id, comments, setComments, currentUser, addedComments}) {
 
     const [isLoading, setIsLoading] = useState(true)
+    const [deleteError, setDeleteError] = useState(false)
 
     useEffect(() => {
         api.fetchCommentsByReviewId(id)
@@ -13,6 +14,12 @@ export default function Comments({id, comments, setComments, currentUser, addedC
         setIsLoading(false)
     })
     }, [])
+
+    // function addCommentAPI(id) {
+    //     api.deleteCommentById(addedComments[id])
+    //         .then(setDeleteError(false))
+    //         .catch(err => setDeleteError(true))
+    // }
 
     function handleDelete(e) {
         const id = e.target.value
@@ -24,11 +31,16 @@ export default function Comments({id, comments, setComments, currentUser, addedC
         })
         if(addedComments[id]) {
             api.deleteCommentById(addedComments[id])
+            .then(setDeleteError(false))
+            .catch(err => setDeleteError(true))
         } else {
             api.deleteCommentById(id)
-
+            .then(setDeleteError(false))
+            .catch(err => {
+                setDeleteError(true)
+                alert('error deleting! please refresh and try again!')
+            })
         }
-        // api.deleteCommentById(id)
     }
 
     if (isLoading) {
