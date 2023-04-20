@@ -7,6 +7,7 @@ import QueryBar from "./QueryBar"
 
 export default function ReviewList() {
 
+    const [queryError, setQueryError] = useState()
     const [reviews, setReviews] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
@@ -23,15 +24,24 @@ export default function ReviewList() {
     const orderQuery = searchParams.get('order')
 
     useEffect(() => {
+        setQueryError()
         fetchReviews(categoryQuery, sortByQuery, orderQuery)
     .then((response) => {
         setReviews(response)
         setIsLoading(false)
     })
+    .catch(err => {
+        setIsLoading(false)
+        setQueryError(err.response.data.msg)
+    })
      }, [categoryQuery, sortByQuery, orderQuery])
 
     if (isLoading) {
         return <h2>Page is loading...</h2>
+    }
+
+    if (queryError) {
+        return <h2 className="errorMsg">{queryError}</h2>
     }
 
     return (

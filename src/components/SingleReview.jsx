@@ -3,7 +3,7 @@ import * as api from "../api";
 import uparrow from "../imgs/uparrow.png"
 import downarrow from "../imgs/downarrow.png"
 
-export default function SingleReview({id}) {
+export default function SingleReview({id, setIdError}) {
 
     const [review, setReview] = useState([])
     const [isLoading, setIsLoading] = useState(true)
@@ -14,6 +14,9 @@ export default function SingleReview({id}) {
     .then(response => {
         setReview(response)
         setIsLoading(false)
+    })
+    .catch(err => {
+        setIdError(err.response.data.msg)
     })
     }, [])
 

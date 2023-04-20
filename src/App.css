@@ -403,3 +403,15 @@ date {
 #postCommentText:disabled {
   cursor:wait;
 }
+
+.errorMsg{
+  color:red;
+  text-align: center;
+  font-size:xx-large;
+}
+
+.profilePage{
+  text-align: center;
+  color:wheat;
+}
+
