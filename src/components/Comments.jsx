@@ -15,11 +15,14 @@ export default function Comments({id, comments, setComments, currentUser, addedC
     })
     }, [])
 
-    // function addCommentAPI(id) {
-    //     api.deleteCommentById(addedComments[id])
-    //         .then(setDeleteError(false))
-    //         .catch(err => setDeleteError(true))
-    // }
+    function deleteCommentAPI(id) {
+        api.deleteCommentById(id)
+            .then(setDeleteError(false))
+            .catch(err => {
+                setDeleteError(true)
+                alert('error deleting! please refresh and try again!')
+            })
+    }
 
     function handleDelete(e) {
         const id = e.target.value
@@ -30,16 +33,9 @@ export default function Comments({id, comments, setComments, currentUser, addedC
             })
         })
         if(addedComments[id]) {
-            api.deleteCommentById(addedComments[id])
-            .then(setDeleteError(false))
-            .catch(err => setDeleteError(true))
+            deleteCommentAPI(addedComments[id])
         } else {
-            api.deleteCommentById(id)
-            .then(setDeleteError(false))
-            .catch(err => {
-                setDeleteError(true)
-                alert('error deleting! please refresh and try again!')
-            })
+            deleteCommentAPI(id)
         }
     }
 
