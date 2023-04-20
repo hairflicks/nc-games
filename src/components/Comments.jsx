@@ -17,8 +17,7 @@ export default function Comments({id, comments, setComments, currentUser, addedC
     }, [])
 
     function handleDelete(e) {
-
-        setDeleteLoading('waiting')
+        
         setDisabled(true)
         const commentId = e.target.value
 
@@ -59,7 +58,7 @@ export default function Comments({id, comments, setComments, currentUser, addedC
                         <p id="commentAuthor">{comment.author} | </p>
                         <p id="commentVotes">{comment.votes} votes</p>
                         <p id="commentBody">{comment.body}</p>
-                        <date>{postedAt}</date>
+                        <time>{postedAt}</time>
                         {currentUser && currentUser.username === comment.author && <button onClick={handleDelete} value={comment.comment_id} id="deleteComment" disabled={disabled}>delete</button>}
                         {currentUser && currentUser.username === comment.author && deleteError == comment.comment_id && <p id="errorDelete">Error deleting try again!</p>}
                     </article>
