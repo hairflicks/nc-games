@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react"
 import * as api from '../api'
+import uparrow from "../imgs/uparrow.png"
+import downarrow from "../imgs/downarrow.png"
 
 
 export default function Comments({id, comments, setComments, currentUser, addedComments}) {
@@ -7,6 +9,7 @@ export default function Comments({id, comments, setComments, currentUser, addedC
     const [isLoading, setIsLoading] = useState(true)
     const [deleteError, setDeleteError] = useState(false)
     const [disabled, setDisabled] = useState(false)
+    const [commentVoteError, setCommentVoteError] = useState(false)
 
     useEffect(() => {
         api.fetchCommentsByReviewId(id)
@@ -39,6 +42,36 @@ export default function Comments({id, comments, setComments, currentUser, addedC
                 })
     }
 
+    function handleCommentVote(change, commentId) {
+
+        setComments(comments => {
+            const commentsCopy = [...comments]
+            commentsCopy.forEach(comment => {
+                if (comment.comment_id === commentId) {
+                    comment.votes += change
+                }
+            })
+            return commentsCopy
+        })
+
+        api.patchCommentVotes(change, commentId)
+        .then(() => {
+            setCommentVoteError(false)
+        })
+        .catch((err )=> {
+            setCommentVoteError(commentId)
+            setComments(comments => {
+                const commentsCopy = [...comments]
+                commentsCopy.forEach(comment => {
+                    if (comment.comment_id === commentId) {
+                        comment.votes -= change
+                    }
+                })
+                return commentsCopy
+            })
+        })
+    }
+
     if (isLoading) {
         return <h2>Comments are loading....</h2>
     }
@@ -56,6 +89,9 @@ export default function Comments({id, comments, setComments, currentUser, addedC
                     <article id="comment" key={comment.comment_id}>
                         <p id="commentAuthor">{comment.author} | </p>
                         <p id="commentVotes">{comment.votes} votes</p>
+                        <input type="image" src={uparrow} alt="upvote" id="commentUpvote" value='1' onClick={() => {handleCommentVote(1, comment.comment_id)}}/>
+                        <input type="image" src={downarrow} alt="downvote" id="commentDownvote" value='-1' onClick={() => {handleCommentVote(-1, comment.comment_id)}}/>
+                        {commentVoteError === comment.comment_id ? <p id="commentVoteError">unable to process votes</p> : null}
                         <p id="commentBody">{comment.body}</p>
                         <time>{postedAt}</time>
                         {currentUser && currentUser.username === comment.author && <button onClick={handleDelete} value={comment.comment_id} id="deleteComment" disabled={disabled}>delete</button>}

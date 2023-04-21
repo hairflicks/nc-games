@@ -193,6 +193,23 @@ a {
   border-color:#43799C;;
 }
 
+#commentUpvote{
+  height: 10px;
+  width: 10px;
+  margin-left: 5px;
+}
+
+#commentDownvote {
+  height: 10px;
+  width: 10px;
+  margin-left: 5px;
+}
+
+#commentVoteError {
+  color:darkred;
+}
+
+
 #comment {
   padding-left: 3%;
   border-bottom: solid;
