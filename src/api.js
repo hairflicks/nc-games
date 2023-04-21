@@ -62,3 +62,10 @@ export function fetchUserByUsername(username) {
     return boardGamesApi.get(`/users/${username}`)
     .then(({data}) => {return data.user})
 }
+
+export function patchCommentVotes(change, id) {
+    return boardGamesApi.patch(`/comments/${id}`, {inc_votes: change})
+    .then(({data}) => {
+        return data
+    })
+}
