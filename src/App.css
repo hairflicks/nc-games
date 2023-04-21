@@ -35,6 +35,8 @@ header {
   width: auto;
   display: flex;
   justify-content: center;
+  position:sticky;
+  top:0;
 }
 
 #navBar button {
