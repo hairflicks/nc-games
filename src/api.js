@@ -68,3 +68,10 @@ export function patchCommentVotes(change, id) {
         return data
     })
 }
+
+export function postReview(review) {
+    return boardGamesApi.post('/reviews', review)
+    .then((response) => {
+        console.log(response)
+    })
+}

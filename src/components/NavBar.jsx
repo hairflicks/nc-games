@@ -24,9 +24,12 @@ export default function NavBar ({categories, currentUser, setCurrentUser}) {
               })}
             </div>
           </div>
-          <Link to="profile">
-          My Profile
-          </Link>
+          <div className="dropdown">
+            <Link to="/profile" className="dropbtn">My profile</Link>
+            <div className="dropdown-content">
+              <Link to="/post-review">New review</Link>
+            </div>
+          </div>
           {currentUser ?
            <Link onClick={handleLogout}>Logout</Link>
           :

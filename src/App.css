@@ -15,6 +15,19 @@ header a {
   max-width: 90vw;
 }
 
+header p {
+  color: wheat;
+  margin-top: auto;
+  margin-bottom:0;
+  margin-left: auto;
+}
+
+@media screen and (max-width: 620px) {
+  header p {
+    display: none;  
+  }
+}
+
 #dice {
   display: block;
   max-width:230px;
@@ -93,13 +106,21 @@ header {
 #reviewCard {
   min-width: auto;
   max-width: 500px;
-  min-height: 500px;
+  min-height: 200px; 
   border: solid;
+  overflow: hidden;
+  text-overflow: ellipsis;
   border-radius: 3%;
   border-width: 5px;
   border-color: #298AA9;
   background-color: #43799C;
   margin: 15px;
+}
+
+@media screen and (max-width: 1000px) {
+  #reviewCard {
+      
+  }
 }
 
 #reviewCard h2{
@@ -109,6 +130,7 @@ header {
   overflow: hidden;
   border-bottom-style: solid;
   border-bottom-color: #203769;
+  min-width: auto;
 }
 
 #reviewCard p{
@@ -117,14 +139,10 @@ header {
 }
 
 #reviewCard img {
- height: 150px;
- width: 150px;
-}
-
-#reviewCard #reviewBody {
-  height: 190px;
-  display:table;
-  width: 100%;
+ height: auto;
+ max-height: 400px;
+ width: auto;
+ max-width: 60vw;
 }
 
 #reviewImg {
