@@ -462,3 +462,16 @@ date {
   border-top-width: 10px;
   background-color: #43799C;
 }
+
+#pagination {
+  text-align: center;
+
+}
+
+.paginationButton {
+  background-color:#203769;
+  color: wheat;
+  font-size:large;
+  font-weight: bolder;
+  margin:2px;
+}
