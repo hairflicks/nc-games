@@ -8,6 +8,7 @@ export default function ReviewPage({currentUser}) {
     
     const [comments, setComments] = useState([])
     const [idError, setIdError] = useState(false)
+    const [commentCount, setCommentCount] = useState()
     const { id } = useParams()
 
     if (idError) {
@@ -16,8 +17,8 @@ export default function ReviewPage({currentUser}) {
 
     return (
         <div>
-            <SingleReview id={id} setIdError={setIdError}/>
-            <Comments id={id} comments={comments} setComments={setComments} currentUser={currentUser}/>
+            <SingleReview id={id} setIdError={setIdError} setCommentCount={setCommentCount}/>
+            <Comments id={id} comments={comments} setComments={setComments} currentUser={currentUser} commentCount={commentCount}/>
             <PostComment id={id} currentUser={currentUser} setComments={setComments}/>
         </div>
     )

@@ -2,9 +2,10 @@ import { useState, useEffect } from "react"
 import * as api from '../api'
 import uparrow from "../imgs/uparrow.png"
 import downarrow from "../imgs/downarrow.png"
+import PageNavigation from "./PageNavigation"
 
 
-export default function Comments({id, comments, setComments, currentUser, addedComments}) {
+export default function Comments({id, comments, setComments, currentUser, commentCount}) {
 
     const [isLoading, setIsLoading] = useState(true)
     const [deleteError, setDeleteError] = useState(false)
@@ -99,7 +100,9 @@ export default function Comments({id, comments, setComments, currentUser, addedC
                     </article>
                 )
             })}
-        </section> : 
+        <PageNavigation setComments={setComments} commentCount={commentCount} id={id}/>
+        </section>
+         : 
         <section id="comments">
             <h2>No comments to show</h2>
         </section>

@@ -3,7 +3,7 @@ import * as api from "../api";
 import uparrow from "../imgs/uparrow.png"
 import downarrow from "../imgs/downarrow.png"
 
-export default function SingleReview({id, setIdError}) {
+export default function SingleReview({id, setIdError, setCommentCount}) {
 
     const [review, setReview] = useState([])
     const [isLoading, setIsLoading] = useState(true)
@@ -12,6 +12,7 @@ export default function SingleReview({id, setIdError}) {
     useEffect(() => {
         api.fetchReviewById(id)
     .then(response => {
+        setCommentCount(response.comment_count)
         setReview(response)
         setIsLoading(false)
     })

@@ -26,8 +26,8 @@ export function fetchReviewById(id) {
     })
 }
 
-export function fetchCommentsByReviewId(id) {
-    return boardGamesApi.get(`/reviews/${id}/comments`)
+export function fetchCommentsByReviewId(id, p) {
+    return boardGamesApi.get(`/reviews/${id}/comments`, {params: {p}})
     .then(({data}) => {
         return data.comments
     })
