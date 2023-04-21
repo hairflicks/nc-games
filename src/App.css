@@ -4,8 +4,9 @@ html, body {
   background-color: #203769;
 }
 
-header h1 {
+header a {
   font-size: 5.5vmax;
+  font-weight: bolder;
   margin-left: 10%;
   color: #f3e3b2;
   margin-top: 0;
