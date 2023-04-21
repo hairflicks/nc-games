@@ -31,7 +31,7 @@ export default function PostReview({categories, currentUser}) {
                 <label  htmlFor="designer">designer: </label>
                 <input type="text" onChange={(e) => {setDesigner(e.target.value)}} value={designer} name="designer"/>
                 <label  htmlFor="body" >body: </label>
-                <input type="textarea" onChange={(e) => {setBody(e.target.value)}} value={body} name="body" maxlength="10"/>
+                <input type="textarea" onChange={(e) => {setBody(e.target.value)}} value={body} name="body" maxLength="1000"/>
                 <label  htmlFor="img">image url: </label>
                 <input type="text" onChange={(e) => {setImg(e.target.value)}} value={img} name="img"/>
                 <label  htmlFor="category">Category: </label>
