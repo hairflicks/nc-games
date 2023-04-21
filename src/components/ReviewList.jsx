@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import ReviewCard from "./ReviewCard"
 import { useSearchParams } from "react-router-dom"
 import QueryBar from "./QueryBar"
+import ReviewPageNavigation from "./ReviewPagination"
 
 
 export default function ReviewList() {
@@ -10,31 +11,27 @@ export default function ReviewList() {
     const [queryError, setQueryError] = useState()
     const [reviews, setReviews] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-
+    const [totalReviews, setTotalReviews] = useState()
     const [searchParams, setSearchParams] = useSearchParams()
-
-    useEffect(() => {
-        searchParams.delete('sort_by')
-        searchParams.delete('order')
-        setSearchParams(searchParams)
-    }, [])
 
     const categoryQuery = searchParams.get('category')
     const sortByQuery = searchParams.get('sort_by')
     const orderQuery = searchParams.get('order')
+    const page = searchParams.get('page')
 
     useEffect(() => {
         setQueryError()
-        fetchReviews(categoryQuery, sortByQuery, orderQuery)
-    .then((response) => {
-        setReviews(response)
+        fetchReviews(categoryQuery, sortByQuery, orderQuery, page)
+    .then(({reviews, total_count}) => {
+        setTotalReviews(total_count)
+        setReviews(reviews)
         setIsLoading(false)
     })
     .catch(err => {
         setIsLoading(false)
         setQueryError(err.response.data.msg)
     })
-     }, [categoryQuery, sortByQuery, orderQuery])
+     }, [categoryQuery, sortByQuery, orderQuery, page])
 
     if (isLoading) {
         return <h2>Page is loading...</h2>
@@ -56,6 +53,7 @@ export default function ReviewList() {
                     </div>
             })}
         </section>
+        <ReviewPageNavigation totalReviews={totalReviews}/>
         </main>
     )
 

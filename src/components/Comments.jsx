@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import * as api from '../api'
 import uparrow from "../imgs/uparrow.png"
 import downarrow from "../imgs/downarrow.png"
-import PageNavigation from "./PageNavigation"
+import PageNavigation from "./CommentPagination"
 
 
 export default function Comments({id, comments, setComments, currentUser, commentCount}) {

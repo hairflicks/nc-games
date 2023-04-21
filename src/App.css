@@ -475,3 +475,11 @@ date {
   font-weight: bolder;
   margin:2px;
 }
+
+.reviewPaginationButton {
+  background-color:wheat;
+  color: #203769;
+  font-size:large;
+  font-weight: bolder;
+  margin:5px;
+}
