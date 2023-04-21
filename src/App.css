@@ -341,7 +341,17 @@ date {
 }
 
 #orderSelector {
-  display: inline
+  display: inline;
+}
+
+#limitSelector {
+  display: inline;
+}
+
+#limit {
+  background-color: wheat;
+  color: #203769;
+  font-weight: bold;
 }
 
 #sortBy {
@@ -355,6 +365,7 @@ date {
   background-color: wheat;
   color: #203769;
   font-weight: bold;
+  margin-right: 10px;
 }
 
 #sortBy option{
@@ -367,6 +378,16 @@ date {
   background-color: wheat;
   color: #203769;
   font-weight: bold;
+}
+
+#limit option{
+  background-color: wheat;
+  color: #203769;
+  font-weight: bold;
+}
+
+#limit:hover {
+  cursor: pointer;
 }
 
 #sortBy:hover {

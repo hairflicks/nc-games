@@ -18,9 +18,7 @@ export default function NavBar ({categories, currentUser, setCurrentUser}) {
               </Link>
               {categories.map((category) => {
                 return (<div key={category.slug}>
-                  <Link to={`reviews?category=${category.slug}` }>
-                    {category.slug}
-                  </Link>
+                  <Link to={`reviews?category=${category.slug}` }>{category.slug}</Link>
                 </div>        
                 );
               })}
