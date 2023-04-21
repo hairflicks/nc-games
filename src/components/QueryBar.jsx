@@ -8,12 +8,14 @@ export default function QueryBar() {
     function handleSortByChange(e) {
         const sort_by = e.target.value
         searchParams.set("sort_by", sort_by)
+        searchParams.delete('page')
         setSearchParams(searchParams)
     }
 
     function handleOrderChange(e) {
         const order = e.target.value
         searchParams.set("order", order)
+        searchParams.delete('page')
         setSearchParams(searchParams)
     }
 

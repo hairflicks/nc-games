@@ -12,9 +12,9 @@ export default function PageNavigation({setComments, id, commentCount}) {
 
     function handlePageClick(e) {
         const page = e.target.value
-        console.log(page)
         api.fetchCommentsByReviewId(id, page)
         .then(response => setComments(response))
+        document.getElementById("singleReview").scrollIntoView()
     }
 
     return (
