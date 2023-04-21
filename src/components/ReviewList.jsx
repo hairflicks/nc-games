@@ -24,6 +24,7 @@ export default function ReviewList() {
         setQueryError()
         fetchReviews(categoryQuery, sortByQuery, orderQuery, page, limit)
     .then(({reviews, total_count}) => {
+        console.log('hi')
         setTotalReviews(total_count)
         setReviews(reviews)
         setIsLoading(false)

@@ -13,7 +13,6 @@ export default function ReviewCard({review}) {
             <div id="reviewImg">
             <img src={review.review_img_url} alt="review image"></img>
             </div>
-            {/* <p id="reviewBody">{review.review_body}</p> */}
             <br></br>
             <p id="reviewComments">Comments: {review.comment_count}</p>
             <p id="votes">votes:{review.votes}</p>

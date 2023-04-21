@@ -7,25 +7,31 @@ export default function NavBar ({categories, currentUser, setCurrentUser}) {
       setCurrentUser()
     }
 
+    function stopButtonPersistOnMobile() {
+        setTimeout(() => {
+          window.location.reload();
+        }, 0)
+    }
+
     return (
         <nav id="navBar">
             <Link to="/reviews"> Reviews</Link>
           <div className="dropdown">
-            <Link to="/reviews" className="dropbtn">Categories</Link>
+            <button className="dropbtn">Categories</button>
             <div className="dropdown-content">
-              <Link to="/reviews">
+              <Link to="/reviews" onClick={stopButtonPersistOnMobile}>
                 All
               </Link>
               {categories.map((category) => {
                 return (<div key={category.slug}>
-                  <Link to={`reviews?category=${category.slug}` }>{category.slug}</Link>
+                  <Link onClick={stopButtonPersistOnMobile} to={`reviews?category=${category.slug}` }>{category.slug}</Link>
                 </div>        
                 );
               })}
             </div>
           </div>
           <div className="dropdown">
-            <Link to="/profile" className="dropbtn">My profile</Link>
+            <Link to="/profile" className="dropbtn" onClick={stopButtonPersistOnMobile}>My profile</Link>
             <div className="dropdown-content">
               <Link to="/post-review">New review</Link>
             </div>
