@@ -2,11 +2,18 @@ import { useState, useEffect } from "react"
 import { Link, useSearchParams } from "react-router-dom"
 import * as api from '../api'
 
-export default function ReviewPageNavigation({totalReviews}) {
+export default function ReviewPageNavigation({totalReviews, limit}) {
 
     const [searchParams,setSearchParams] = useSearchParams()
 
-    const pages = Math.ceil(totalReviews / 10)
+    let pages = 0
+
+    if (limit) {
+        pages = Math.ceil(totalReviews / limit)
+    } else {
+        pages = Math.ceil(totalReviews / 10)
+    }
+    
     const pageCountArr = []
     for (let i = 1; i <= pages; i ++) {
         pageCountArr.push(i)

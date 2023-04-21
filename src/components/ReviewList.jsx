@@ -18,10 +18,11 @@ export default function ReviewList() {
     const sortByQuery = searchParams.get('sort_by')
     const orderQuery = searchParams.get('order')
     const page = searchParams.get('page')
+    const limit = searchParams.get('limit')
 
     useEffect(() => {
         setQueryError()
-        fetchReviews(categoryQuery, sortByQuery, orderQuery, page)
+        fetchReviews(categoryQuery, sortByQuery, orderQuery, page, limit)
     .then(({reviews, total_count}) => {
         setTotalReviews(total_count)
         setReviews(reviews)
@@ -31,7 +32,7 @@ export default function ReviewList() {
         setIsLoading(false)
         setQueryError(err.response.data.msg)
     })
-     }, [categoryQuery, sortByQuery, orderQuery, page])
+     }, [categoryQuery, sortByQuery, orderQuery, page, limit])
 
     if (isLoading) {
         return <h2>Page is loading...</h2>
@@ -53,7 +54,7 @@ export default function ReviewList() {
                     </div>
             })}
         </section>
-        <ReviewPageNavigation totalReviews={totalReviews}/>
+        <ReviewPageNavigation totalReviews={totalReviews} limit={limit}/>
         </main>
     )
 
